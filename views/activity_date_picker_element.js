@@ -1,12 +1,13 @@
 //@ts-check
 //@ts-ignore
 import {css, html, LitElement} from 'https://unpkg.com/lit-element?module';
+import * as Util from '../logic/util.js';
 
 export class ActivityDatePickerElement extends LitElement {
   constructor() {
     super();
     /** @type {Date?} */
-    this.date = null;
+    this.date;
     this.callback = date => {};
   }
 
@@ -15,13 +16,14 @@ export class ActivityDatePickerElement extends LitElement {
   }
 
   dateChanged_(e) {
-    console.log('date changed to ' + e.target.value);
-    this.callback(e.target.value);
+    this.callback(Util.getMidnightFromString(e.target.value));
   }
 
   render() {
     return html`
-      <input type="date" @input=${this.dateChanged_} />
+      <input type="date"
+             value=${this.date ? Util.getDateString(this.date) : ''}
+             @input=${this.dateChanged_} />
     `;
   }
 }

@@ -60,16 +60,19 @@ export class Recurrence {
     if (!recurrence) {
       return null;
     }
+    let nextDate;
+    if (recurrence.nextDate) {
+      nextDate = new Date(recurrence.nextDate);
+    }
     switch (recurrence.type.name) {
       case RecurrenceType.EVERY_DAY.name:
-        return new EveryDayRecurrence(recurrence.nextDate);
+        return new EveryDayRecurrence(nextDate);
       case RecurrenceType.NEVER.name:
         return new NeverRecurrence();
       case RecurrenceType.CYCLE.name:
-        return new CycleRecurrence(recurrence.daysInCycle, recurrence.nextDate);
+        return new CycleRecurrence(recurrence.daysInCycle, nextDate);
       case RecurrenceType.BACKOFF.name:
-        return new BackoffRecurrence(
-            recurrence.daysToBackoff, recurrence.nextDate);
+        return new BackoffRecurrence(recurrence.daysToBackoff, nextDate);
       default:
         throw 'Invalid recurrence type';
     }
@@ -81,6 +84,14 @@ export class Recurrence {
 
   /** @returns {boolean} */
   shouldReactivateToday() {
+    throw new Error('Method not implemented.');
+  }
+
+  /**
+   * Number of days in cycle (or back-off).
+   * @returns {number}
+   */
+  get days() {
     throw new Error('Method not implemented.');
   }
 }
@@ -99,6 +110,10 @@ export class EveryDayRecurrence extends Recurrence {
   shouldReactivateToday() {
     return true;
   }
+
+  get days() {
+    return 1;
+  }
 }
 
 export class NeverRecurrence extends Recurrence {
@@ -112,6 +127,10 @@ export class NeverRecurrence extends Recurrence {
 
   shouldReactivateToday() {
     return false;
+  }
+
+  get days() {
+    return 0;
   }
 }
 
@@ -133,6 +152,10 @@ export class CycleRecurrence extends Recurrence {
   shouldReactivateToday() {
     return this.nextDate <= Util.getMidnightToday();
   }
+
+  get days() {
+    return this.daysInCycle;
+  }
 }
 
 export class BackoffRecurrence extends Recurrence {
@@ -149,6 +172,10 @@ export class BackoffRecurrence extends Recurrence {
 
   shouldReactivateToday() {
     return this.nextDate <= Util.getMidnightToday();
+  }
+
+  get days() {
+    return this.daysToBackoff;
   }
 }
 

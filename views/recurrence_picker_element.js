@@ -13,7 +13,11 @@ export class RecurrencePickerElement extends LitElement {
   }
 
   static get properties() {
-    return {recurrence: {type: Object}};
+    return {
+      recurrence: {type: Object},
+      days: {type: Number},
+      callback: {type: Object}
+    };
   }
 
   recurrenceChanged_(e) {
@@ -46,7 +50,8 @@ export class RecurrencePickerElement extends LitElement {
           Backoff by
         </option>
       </select>
-      <input type="number" @input=${this.daysChanged_} /> days
+      <input type="number" value=${this.days}
+          @input=${this.daysChanged_} /> days
     `;
   }
 }

@@ -100,8 +100,6 @@ export class Activity {
     this.dateCreated = null;
     /** @type {Date?} */
     this.dateCompleted = null;
-    /** @type {Date?} */
-    this.nextDate = null;
     /** @type {ActivityState} */
     this.state = ActivityState.ACTIVE;
     /** @type {Recurrence} */
@@ -136,7 +134,6 @@ export class Activity {
    *          tags: string[],
    *          dateCreated: string,
    *          dateCompleted: string?,
-   *          nextDate: string?,
    *          state: object,
    *          recurrence: object}} obj
    */
@@ -148,7 +145,6 @@ export class Activity {
     activity.tags = obj.tags;
     activity.dateCreated = nullOrDate(obj.dateCreated);
     activity.dateCompleted = nullOrDate(obj.dateCompleted);
-    activity.nextDate = nullOrDate(obj.nextDate);
     activity.state = ActivityState.fromObject(obj.state);
     activity.recurrence =
         Recurrence.fromObject(obj.recurrence) || new NeverRecurrence();

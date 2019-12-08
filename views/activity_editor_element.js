@@ -58,7 +58,7 @@ export class ActivityEditorElement extends LitElement {
 
   /** @param {Date} date */
   updateNextDate_(date) {
-    this.activity.nextDate = date;
+    this.activity.recurrence.nextDate = date;
   }
 
   /** @param {ActivityState} state */
@@ -81,6 +81,7 @@ export class ActivityEditorElement extends LitElement {
       </mwc-textfield>
       <recurrence-picker
           .recurrence=${this.activity ? this.activity.recurrence.type : null}
+          .days=${this.activity ? this.activity.recurrence.days : 0}
           .callback=${this.updateRecurrence_.bind(this)}>
       </recurrence-picker>
       <activity-state-picker
@@ -89,7 +90,7 @@ export class ActivityEditorElement extends LitElement {
       </activity-state-picker>
       <div>
         <activity-date-picker
-            .date=${this.activity ? this.activity.nextDate : null}
+            .date=${this.activity ? this.activity.recurrence.nextDate : null}
             .callback=${this.updateNextDate_.bind(this)}>
         </activity-date-picker>
       </div>
