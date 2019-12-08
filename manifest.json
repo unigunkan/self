@@ -1,0 +1,10 @@
+{
+  "short_name": "Self",
+  "name": "Self",
+  "icons": [],
+  "start_url": "/self/",
+  "background_color": "#000",
+  "display": "standalone",
+  "scope": "/self/",
+  "theme_color": "#000"
+}
