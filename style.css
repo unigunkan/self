@@ -1,0 +1,8 @@
+body {
+  --activated-color: white;
+  --deactivated-color: grey;
+
+  background-color: black;
+  color: var(--activated-color);
+  font-family: Roboto, sans-serif;
+}
