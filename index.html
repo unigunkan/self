@@ -17,6 +17,10 @@
   <script src="views/app_element.js" type="module"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
+  <script>
+    // Service worker can be removed at chrome://serviceworker-internals
+    navigator.serviceWorker.register('service_worker.js');
+  </script>
 </head>
 
 <body>
