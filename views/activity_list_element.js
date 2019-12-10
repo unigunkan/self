@@ -27,7 +27,19 @@ export class ActivityListElement extends LitElement {
       }
 
       li {
-        padding: 15px;
+        align-items: center;
+        display: flex;
+        padding: 10px;
+      }
+
+      mwc-checkbox {
+        padding-bottom: 2px;
+        padding-right: 10px;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
       }
     `;
   }
@@ -53,7 +65,9 @@ export class ActivityListElement extends LitElement {
 
   render() {
     return html`
-      ${this.activities.map(a => this.createActivityListItem_(a))}
+      <ul>
+        ${this.activities.map(a => this.createActivityListItem_(a))}
+      </ul>
     `;
   }
 }

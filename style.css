@@ -5,4 +5,5 @@ body {
   background-color: black;
   color: var(--activated-color);
   font-family: Roboto, sans-serif;
+  margin: 0;
 }
