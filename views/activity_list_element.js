@@ -1,8 +1,8 @@
 //@ts-check
 //@ts-ignore
-import {Checkbox} from 'https://unpkg.com/@material/mwc-checkbox?module';
+import {Checkbox} from 'https://unpkg.com/@material/mwc-checkbox@0.11.1/mwc-checkbox.js?module';
 //@ts-ignore
-import {css, html, LitElement} from 'https://unpkg.com/lit-element?module';
+import {css, html, LitElement} from 'https://unpkg.com/lit-element@2.2.1/lit-element.js?module';
 
 import {Activity, ActivityState} from '../logic/activity.js';
 

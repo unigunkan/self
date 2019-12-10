@@ -1,8 +1,8 @@
 //@ts-check
 //@ts-ignore
-import {Button} from 'https://unpkg.com/@material/mwc-button?module';
+import {Button} from 'https://unpkg.com/@material/mwc-button@0.11.1/mwc-button.js?module';
 //@ts-ignore
-import {css, html, LitElement} from 'https://unpkg.com/lit-element?module';
+import {css, html, LitElement} from 'https://unpkg.com/lit-element@2.2.1/lit-element.js?module';
 
 import {Activity} from '../logic/activity.js';
 import {DataStore} from '../logic/local_datastore.js';

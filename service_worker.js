@@ -23,6 +23,14 @@ const PRECACHE_URLS = [
 ];
 // clang-format on
 
+importScripts(
+    'https://unpkg.com/@material/mwc-checkbox@0.11.1/mwc-checkbox.js?module',
+    'https://unpkg.com/@material/mwc-button@0.11.1/mwc-button.js?module',
+    'https://unpkg.com/@material/mwc-textarea@0.11.1/mwc-textarea.js?module',
+    'https://unpkg.com/@material/mwc-textfield?module',
+    'https://unpkg.com/lit-element@2.2.1/lit-element.js?module',
+);
+
 // The install handler takes care of precaching the resources we always need.
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(PRECACHE)
