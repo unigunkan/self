@@ -39,15 +39,16 @@ export class DataLoaderElement extends LitElement {
 
   render() {
     return html`
+      <link rel="stylesheet" href="../third_party/milligram.css">
       <label>
         <input
             type="file"
             id="file-picker"
             style="display: none"
             @change=${this.uploadData} />
-        Upload data
+        <button>Upload data</button>
       </label>
-      <mwc-button @click=${this.downloadData}>Download data</mwc-button>
+      <button @click=${this.downloadData}>Download data</button>
     `;
   }
 }

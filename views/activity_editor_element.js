@@ -33,6 +33,15 @@ export class ActivityEditorElement extends LitElement {
 
   static get styles() {
     return css`
+      .debug-info {
+        background-color: black;
+        font-family: 'Roboto Mono', Monaco, monospace;
+      }
+
+      input {
+        color: white;
+      }
+
       mwc-textarea, mwc-textfield {
         --mdc-text-field-fill-color: #111;
         --mdc-text-field-ink-color: white;
@@ -73,12 +82,13 @@ export class ActivityEditorElement extends LitElement {
 
   render() {
     return html`
-      <mwc-textfield value=${this.activity ? this.activity.name : ''}
-          @input=${this.updateName_}
-          fullwidth placeholder="name"></mwc-textfield>
-      <mwc-textfield value=${this.activity ? this.activity.description : ''}
-          @input=${this.updateDescription_} fullwidth placeholder="description">
-      </mwc-textfield>
+    <div>
+      <link rel="stylesheet" href="../third_party/milligram.css">
+      <input value=${this.activity ? this.activity.name : ''}
+          placeholder="name" type="text" @input=${this.updateName_} />
+      <input value=${this.activity ? this.activity.description : ''}
+          placeholder="description" type="text"
+          @input=${this.updateDescription_} />
       <recurrence-picker
           .recurrence=${this.activity ? this.activity.recurrence.type : null}
           .days=${this.activity ? this.activity.recurrence.days : 0}
@@ -94,8 +104,11 @@ export class ActivityEditorElement extends LitElement {
             .callback=${this.updateNextDate_.bind(this)}>
         </activity-date-picker>
       </div>
-      <mwc-button label="Save" @click=${this.saveAndExitCallback}></mwc-button>
-      <mwc-button label="Cancel" @click=${this.cancelCallback}></mwc-button>
+      <button @click=${this.saveAndExitCallback}>Save</button>
+      <button @click=${this.cancelCallback}>Cancel</button>
+      <pre class="debug-info">${
+        this.activity ? JSON.stringify(this.activity, null, 2) : ''}</pre>
+    </div>
     `;
   }
 }

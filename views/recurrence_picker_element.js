@@ -20,6 +20,14 @@ export class RecurrencePickerElement extends LitElement {
     };
   }
 
+  static get styles() {
+    return css`
+      input, select {
+        color: white;
+      }
+    `;
+  }
+
   recurrenceChanged_(e) {
     this.recurrence = RecurrenceType.fromString(e.target.value);
     this.callback(this.recurrence, this.days);
@@ -32,6 +40,7 @@ export class RecurrencePickerElement extends LitElement {
 
   render() {
     return html`
+      <link rel="stylesheet" href="../third_party/milligram.css">
       <select name="recurrence" @change=${this.recurrenceChanged_}>
         <option value="never"
             ?selected=${this.recurrence == RecurrenceType.NEVER}>

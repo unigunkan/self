@@ -164,11 +164,7 @@ export class Activity {
       this.entries.push(Util.getMidnightToday());
     }
     this.recurrence.onEntryAddedForToday();
-    if (this.recurrence.type == RecurrenceType.NEVER) {
-      this.state = ActivityState.COMPLETED;
-    } else {
-      this.state = ActivityState.SNOOZED;
-    }
+    this.state = ActivityState.SNOOZED;
   }
 
   removeEntryForToday() {

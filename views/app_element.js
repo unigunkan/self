@@ -87,6 +87,7 @@ export class SelfAppElement extends LitElement {
 
   render() {
     return html`
+      <link rel="stylesheet" href="../third_party/milligram.css">
       <activity-list
           ?hidden=${!!this.selectedActivity_}
           .activities=${this.activities_}
@@ -99,11 +100,11 @@ export class SelfAppElement extends LitElement {
           .cancelCallback=${this.selectActivity_.bind(this, null)}
           .saveAndExitCallback=${this.saveActivity_.bind(this)}>
       </activity-editor>
-      <mwc-button
-          label="Add"
+      <button
           @click=${this.createActivity_.bind(this)}
           ?hidden=${!!this.selectedActivity_}>
-      </mwc-button>
+        Add
+      </button>
       <data-loader
           .data=${this.data}
           .uploadCallback=${this.setData_.bind(this)}>
