@@ -83,7 +83,7 @@ export class ActivityEditorElement extends LitElement {
   render() {
     return html`
     <div>
-      <link rel="stylesheet" href="../third_party/milligram.css">
+      <link rel="stylesheet" href="third_party/milligram.css">
       <input value=${this.activity ? this.activity.name : ''}
           placeholder="name" type="text" @input=${this.updateName_} />
       <input value=${this.activity ? this.activity.description : ''}

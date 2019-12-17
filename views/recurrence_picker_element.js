@@ -40,7 +40,7 @@ export class RecurrencePickerElement extends LitElement {
 
   render() {
     return html`
-      <link rel="stylesheet" href="../third_party/milligram.css">
+      <link rel="stylesheet" href="third_party/milligram.css">
       <select name="recurrence" @change=${this.recurrenceChanged_}>
         <option value="never"
             ?selected=${this.recurrence == RecurrenceType.NEVER}>

@@ -87,7 +87,7 @@ export class SelfAppElement extends LitElement {
 
   render() {
     return html`
-      <link rel="stylesheet" href="../third_party/milligram.css">
+      <link rel="stylesheet" href="third_party/milligram.css">
       <activity-list
           ?hidden=${!!this.selectedActivity_}
           .activities=${this.activities_}
