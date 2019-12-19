@@ -1,10 +1,6 @@
 //@ts-check
-//@ts-ignore
-import {Checkbox} from 'https://unpkg.com/@material/mwc-checkbox@0.11.1/mwc-checkbox.js?module';
-//@ts-ignore
-import {css, html, LitElement} from 'https://unpkg.com/lit-element@2.2.1/lit-element.js?module';
-
 import {Activity, ActivityState} from '../logic/activity.js';
+import {css, html, LitElement} from '../third_party/lit-element/lit-element.js';
 
 export class ActivityListElement extends LitElement {
   constructor() {
@@ -22,6 +18,12 @@ export class ActivityListElement extends LitElement {
 
   static get styles() {
     return css`
+      .checkbox {
+        height: 20px;
+        margin-right: 10px;
+        width: 20px;
+      }
+
       .disabled {
         color: grey;
       }
@@ -32,11 +34,6 @@ export class ActivityListElement extends LitElement {
         padding: 10px;
       }
 
-      mwc-checkbox {
-        padding-bottom: 2px;
-        padding-right: 10px;
-      }
-
       ul {
         list-style-type: none;
         padding: 0;
@@ -45,7 +42,7 @@ export class ActivityListElement extends LitElement {
   }
 
   onCheckboxClicked_(id, event) {
-    this.checkboxCallback(id, !event.currentTarget.checked);
+    this.checkboxCallback(id, event.currentTarget.checked);
     event.stopPropagation();
   }
 
@@ -55,9 +52,10 @@ export class ActivityListElement extends LitElement {
       <li @click=${() => this.selectionCallback(activity.id)}
           .activity=${activity}
           class="${activity.state == ActivityState.ACTIVE ? '' : 'disabled'}">
-        <mwc-checkbox @click=${e => this.onCheckboxClicked_(activity.id, e)}
-            .checked=${activity.hasEntryForToday()}>
-        </mwc-checkbox>
+        <input type="checkbox"
+            class="checkbox"
+            @click=${e => this.onCheckboxClicked_(activity.id, e)}
+            .checked=${activity.hasEntryForToday()} />
         ${activity.name}
       </li>
     `;

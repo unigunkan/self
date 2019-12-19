@@ -1,10 +1,7 @@
 //@ts-check
-//@ts-ignore
-import {Button} from 'https://unpkg.com/@material/mwc-button@0.11.1/mwc-button.js?module';
-//@ts-ignore
-import {css, html, LitElement} from 'https://unpkg.com/lit-element@2.2.1/lit-element.js?module';
 import {Activity} from '../logic/activity.js';
 import {DataStore} from '../logic/local_datastore.js';
+import {css, html, LitElement} from '../third_party/lit-element/lit-element.js';
 import {ActivityEditorElement} from './activity_editor_element.js';
 import {ActivityListElement} from './activity_list_element.js';
 

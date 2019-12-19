@@ -1,17 +1,8 @@
 //@ts-check
-//@ts-ignore
-import {Button} from 'https://unpkg.com/@material/mwc-button@0.11.1/mwc-button.js?module';
-//@ts-ignore
-import {TextArea} from 'https://unpkg.com/@material/mwc-textarea@0.11.1/mwc-textarea.js?module';
-//@ts-ignore
-import {TextField} from 'https://unpkg.com/@material/mwc-textfield?module';
-//@ts-ignore
-import {css, html, LitElement} from 'https://unpkg.com/lit-element@2.2.1/lit-element.js?module';
-
 import {Activity, ActivityState} from '../logic/activity.js';
 import {DataStore} from '../logic/local_datastore.js';
 import {Recurrence, RecurrenceType} from '../logic/recurrence.js';
-
+import {css, html, LitElement} from '../third_party/lit-element/lit-element.js';
 
 /** @type {DataStore} */
 //@ts-ignore

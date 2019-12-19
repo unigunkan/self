@@ -1,7 +1,6 @@
 //@ts-check
-//@ts-ignore
-import {css, html, LitElement} from 'https://unpkg.com/lit-element@2.2.1/lit-element.js?module';
 import {ActivityState} from '../logic/activity.js';
+import {css, html, LitElement} from '../third_party/lit-element/lit-element.js';
 
 export class ActivityStatePickerElement extends LitElement {
   constructor() {
