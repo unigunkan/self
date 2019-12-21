@@ -84,7 +84,7 @@ export class Recurrence {
 
   /** @returns {boolean} */
   shouldReactivateToday() {
-    throw new Error('Method not implemented.');
+    return this.nextDate && this.nextDate <= Util.getMidnightToday();
   }
 
   /**
@@ -107,7 +107,7 @@ export class EveryDayRecurrence extends Recurrence {
   }
 
   shouldReactivateToday() {
-    return true;
+    return !this.nextDate || super.shouldReactivateToday();
   }
 
   get days() {
@@ -122,10 +122,6 @@ export class NeverRecurrence extends Recurrence {
 
   onEntryAddedForToday() {
     this.nextDate = null;
-  }
-
-  shouldReactivateToday() {
-    return false;
   }
 
   get days() {
@@ -147,10 +143,6 @@ export class CycleRecurrence extends Recurrence {
     }
   }
 
-  shouldReactivateToday() {
-    return this.nextDate <= Util.getMidnightToday();
-  }
-
   get days() {
     return this.daysInCycle;
   }
@@ -165,10 +157,6 @@ export class BackoffRecurrence extends Recurrence {
 
   onEntryAddedForToday() {
     this.nextDate = Util.getMidnightInDays(this.daysToBackoff);
-  }
-
-  shouldReactivateToday() {
-    return this.nextDate <= Util.getMidnightToday();
   }
 
   get days() {
