@@ -28,11 +28,11 @@ RecurrenceType.values = [
 ];
 
 export class Recurrence {
-  /** @param {RecurrenceType} type */
-  constructor(type) {
+  /** @param {RecurrenceType} type @param {Date?} nextDate */
+  constructor(type, nextDate) {
     this.type = type;
     /** @type {Date?} */
-    this.nextDate = null;
+    this.nextDate = nextDate;
   }
 
   /**
@@ -68,7 +68,7 @@ export class Recurrence {
       case RecurrenceType.EVERY_DAY.name:
         return new EveryDayRecurrence(nextDate);
       case RecurrenceType.NEVER.name:
-        return new NeverRecurrence();
+        return new NeverRecurrence(nextDate);
       case RecurrenceType.CYCLE.name:
         return new CycleRecurrence(recurrence.daysInCycle, nextDate);
       case RecurrenceType.BACKOFF.name:
@@ -99,8 +99,7 @@ export class Recurrence {
 export class EveryDayRecurrence extends Recurrence {
   /** @param {Date?} nextDate */
   constructor(nextDate = null) {
-    super(RecurrenceType.EVERY_DAY);
-    this.nextDate = nextDate;
+    super(RecurrenceType.EVERY_DAY, nextDate);
   }
 
   onEntryAddedForToday() {
@@ -117,8 +116,8 @@ export class EveryDayRecurrence extends Recurrence {
 }
 
 export class NeverRecurrence extends Recurrence {
-  constructor() {
-    super(RecurrenceType.NEVER);
+  constructor(nextDate = null) {
+    super(RecurrenceType.NEVER, nextDate);
   }
 
   onEntryAddedForToday() {
@@ -135,11 +134,10 @@ export class NeverRecurrence extends Recurrence {
 }
 
 export class CycleRecurrence extends Recurrence {
-  /** @param {number} daysInCycle @param {Date?} firstDay */
-  constructor(daysInCycle, firstDay = Util.getMidnightToday()) {
-    super(RecurrenceType.CYCLE);
+  /** @param {number} daysInCycle @param {Date?} nextDate */
+  constructor(daysInCycle, nextDate = Util.getMidnightToday()) {
+    super(RecurrenceType.CYCLE, nextDate);
     this.daysInCycle = daysInCycle;
-    this.nextDate = firstDay;
   }
 
   onEntryAddedForToday() {
@@ -159,11 +157,10 @@ export class CycleRecurrence extends Recurrence {
 }
 
 export class BackoffRecurrence extends Recurrence {
-  /** @param {number} daysToBackoff  @param {Date?} firstDay  */
-  constructor(daysToBackoff, firstDay = Util.getMidnightToday()) {
-    super(RecurrenceType.BACKOFF);
+  /** @param {number} daysToBackoff  @param {Date?} nextDate  */
+  constructor(daysToBackoff, nextDate = Util.getMidnightToday()) {
+    super(RecurrenceType.BACKOFF, nextDate);
     this.daysToBackoff = daysToBackoff;
-    this.nextDate = firstDay;
   }
 
   onEntryAddedForToday() {
