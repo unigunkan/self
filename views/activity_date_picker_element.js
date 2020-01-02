@@ -22,7 +22,7 @@ export class ActivityDatePickerElement extends LitElement {
   render() {
     return html`
       <input type="date"
-             value=${this.date ? Util.getDateString(this.date) : ''}
+             .value=${this.date ? Util.getDateString(this.date) : ''}
              @input=${this.dateChanged_} />
     `;
   }

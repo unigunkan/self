@@ -45,7 +45,7 @@ export class SelfAppElement extends LitElement {
 
   refreshActivities_() {
     // We must reassign |activities_| in order for the change to be picked up by
-    // LitElement. Also consider using shouldInvalidate().
+    // LitElement. Also consider using hasChanged().
     this.activities_ = [...this.data.activities];
   }
 

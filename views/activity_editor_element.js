@@ -75,9 +75,9 @@ export class ActivityEditorElement extends LitElement {
     return html`
     <div>
       <link rel="stylesheet" href="third_party/milligram.css">
-      <input value=${this.activity ? this.activity.name : ''}
+      <input .value=${this.activity ? this.activity.name : ''}
           placeholder="name" type="text" @input=${this.updateName_} />
-      <input value=${this.activity ? this.activity.description : ''}
+      <input .value=${this.activity ? this.activity.description : ''}
           placeholder="description" type="text"
           @input=${this.updateDescription_} />
       <recurrence-picker

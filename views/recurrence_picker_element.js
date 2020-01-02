@@ -58,7 +58,7 @@ export class RecurrencePickerElement extends LitElement {
           Backoff by
         </option>
       </select>
-      <input type="number" value=${this.days}
+      <input type="number" .value=${this.days}
           @input=${this.daysChanged_} /> days
     `;
   }
